@@ -5,20 +5,20 @@ import { Modal } from './components/UI';
 const App = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const openModal = () => {
+  const openModalHandler = () => {
     setShowModal(true);
   };
 
-  const closeModal = () => {
+  const closeModalHandler = () => {
     setShowModal(false);
   };
 
   return (
     <div>
-      <Modal showModal={showModal} closeModal={closeModal}>
-        <Cart closeModal={closeModal} />
+      <Modal showModal={showModal} onCloseModal={closeModalHandler}>
+        <Cart onCloseModal={closeModalHandler} />
       </Modal>
-      <Header openModal={openModal} />
+      <Header onOpenModal={openModalHandler} />
       <Main />
     </div>
   );

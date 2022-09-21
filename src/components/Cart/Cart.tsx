@@ -1,7 +1,7 @@
 import * as S from './Cart.styled';
 
 interface Props {
-  closeModal: () => void;
+  onCloseModal: () => void;
 }
 
 const Cart = (props: Props) => {
@@ -10,7 +10,7 @@ const Cart = (props: Props) => {
       id: Math.random(),
       name: 'Sushi',
       amount: 2,
-      price: 12.99,
+      price: 3.99,
     },
     {
       id: Math.random(),
@@ -32,7 +32,7 @@ const Cart = (props: Props) => {
         <span>$12.99</span>
       </S.Total>
       <S.Actions>
-        <S.CloseButton onClick={props.closeModal}>Close</S.CloseButton>
+        <S.CloseButton onClick={props.onCloseModal}>Close</S.CloseButton>
         <S.ConfirmButton>Order</S.ConfirmButton>
       </S.Actions>
     </S.Cart>

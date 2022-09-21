@@ -3,7 +3,7 @@ import * as S from './Modal.styled';
 interface Props {
   children: React.ReactNode;
   showModal: boolean;
-  closeModal: () => void;
+  onCloseModal: () => void;
 }
 
 const Modal = (props: Props) => {
@@ -12,7 +12,7 @@ const Modal = (props: Props) => {
   }
   return (
     <>
-      <S.ModalBackdrop onClick={props.closeModal} />
+      <S.ModalBackdrop onClick={props.onCloseModal} />
       <S.Modal>{props.children}</S.Modal>
     </>
   );

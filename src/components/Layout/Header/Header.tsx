@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import mealsImg from '../../../assets/meals.jpg';
-import { Cart } from '../../Cart';
-import { Modal } from '../../UI';
 import { HeaderCartButton } from './components';
 import * as S from './Header.styled';
 
 interface Props {
-  openModal: () => void;
+  onOpenModal: () => void;
 }
 
 const Header = (props: Props) => {
@@ -14,7 +11,7 @@ const Header = (props: Props) => {
     <>
       <S.Header>
         <h1>React Meals</h1>
-        <HeaderCartButton openModal={props.openModal} />
+        <HeaderCartButton onOpenModal={props.onOpenModal} />
       </S.Header>
       <S.MainImg>
         <S.Img src={mealsImg} />
