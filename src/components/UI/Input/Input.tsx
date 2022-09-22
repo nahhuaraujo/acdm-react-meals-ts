@@ -9,6 +9,7 @@ interface Props {
     min?: string;
     max?: string;
     step?: string;
+    value: number;
     defaultValue?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };

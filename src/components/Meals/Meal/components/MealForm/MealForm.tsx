@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IMeal } from '../../../../../models';
 import { cartActions } from '../../../../../redux/slices/cart-slice';
 import { Input } from '../../../../UI';
 import * as S from './MealForm.styled';
@@ -21,6 +20,7 @@ const MealForm = (props: Props) => {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(cartActions.addMeal({ ...props.meal, amount }));
+    setAmount(1);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,6 +41,7 @@ const MealForm = (props: Props) => {
           min: '1',
           max: '5',
           step: '1',
+          value: amount,
           defaultValue: amount.toString(),
           onChange,
         }}

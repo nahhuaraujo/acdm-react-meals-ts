@@ -26,21 +26,23 @@ const Cart = (props: Props) => {
         {cart.meals.map(meal => (
           <S.Meal key={meal.id}>
             <p>{meal.name}</p>
-            <button
-              onClick={() => {
-                decreaseMealHandler(meal);
-              }}
-            >
-              -
-            </button>
-            <p>{meal.amount}</p>
-            <button
-              onClick={() => {
-                increaseMealHandler(meal);
-              }}
-            >
-              +
-            </button>
+            <S.MealActions>
+              <S.DecreaseMealAmount
+                onClick={() => {
+                  decreaseMealHandler(meal);
+                }}
+              >
+                -
+              </S.DecreaseMealAmount>
+              <p>{meal.amount}</p>
+              <S.IncreaseMealAmount
+                onClick={() => {
+                  increaseMealHandler(meal);
+                }}
+              >
+                +
+              </S.IncreaseMealAmount>
+            </S.MealActions>
           </S.Meal>
         ))}
       </S.MealsList>
@@ -48,10 +50,10 @@ const Cart = (props: Props) => {
         <span>Total Amount</span>
         <span>${cart.finalPrice}</span>
       </S.Total>
-      <S.Actions>
+      <S.CartActions>
         <S.CloseButton onClick={props.onCloseModal}>Close</S.CloseButton>
         <S.ConfirmButton>Order</S.ConfirmButton>
-      </S.Actions>
+      </S.CartActions>
     </S.Cart>
   );
 };
