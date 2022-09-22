@@ -3,4 +3,5 @@ export interface IMeal {
   name: string;
   description: string;
   price: number;
+  amount: number;
 }

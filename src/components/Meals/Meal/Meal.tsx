@@ -1,9 +1,13 @@
-import { IMeal } from '../../../models';
 import { MealForm } from './components';
 import * as S from './Meal.styled';
 
 interface Props {
-  meal: IMeal;
+  meal: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+  };
 }
 
 const Meal = (props: Props) => {
@@ -16,7 +20,7 @@ const Meal = (props: Props) => {
         <S.Price>{price}</S.Price>
       </div>
       <div>
-        <MealForm mealId={props.meal.id} />
+        <MealForm meal={props.meal} />
       </div>
     </S.Meal>
   );

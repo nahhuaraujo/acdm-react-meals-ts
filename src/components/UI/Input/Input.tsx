@@ -4,11 +4,13 @@ interface Props {
   label: string;
   input: {
     id: string;
+    name: string;
     type: string;
     min?: string;
     max?: string;
     step?: string;
     defaultValue?: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 }
 

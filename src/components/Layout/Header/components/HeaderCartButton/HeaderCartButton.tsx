@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { IStore } from '../../../../../redux/store';
 import { CartIcon } from '../../../../UI';
 import * as S from './HeaderCartButton.styled';
 
@@ -6,13 +8,14 @@ interface Props {
 }
 
 const HeaderCartButton = (props: Props) => {
+  const { totalMeals } = useSelector((state: IStore) => state.cart);
   return (
     <S.HeaderCartButton onClick={props.onOpenModal}>
       <S.Icon>
         <CartIcon />
       </S.Icon>
       <span>Your cart</span>
-      <S.Badge>3</S.Badge>
+      <S.Badge>{totalMeals}</S.Badge>
     </S.HeaderCartButton>
   );
 };

@@ -1,35 +1,52 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { IStore } from '../../redux/store';
 import * as S from './Cart.styled';
+import { cartActions } from '../../redux/slices/cart-slice';
+import { IMeal } from '../../models';
 
 interface Props {
   onCloseModal: () => void;
 }
 
 const Cart = (props: Props) => {
-  const DUMMY_CART_ITEMS = [
-    {
-      id: Math.random(),
-      name: 'Sushi',
-      amount: 2,
-      price: 3.99,
-    },
-    {
-      id: Math.random(),
-      name: 'Pizza',
-      amount: 1,
-      price: 10,
-    },
-  ];
+  const cart = useSelector((state: IStore) => state.cart);
+  const dispatch = useDispatch();
+
+  const decreaseMealHandler = (meal: IMeal) => {
+    dispatch(cartActions.decreaseMealAmount(meal));
+  };
+
+  const increaseMealHandler = (meal: IMeal) => {
+    dispatch(cartActions.increaseMealAmount(meal));
+  };
 
   return (
     <S.Cart>
-      <S.CartItems>
-        {DUMMY_CART_ITEMS.map(cartItem => (
-          <li key={cartItem.id}>{cartItem.name}</li>
+      <S.MealsList>
+        {cart.meals.map(meal => (
+          <S.Meal key={meal.id}>
+            <p>{meal.name}</p>
+            <button
+              onClick={() => {
+                decreaseMealHandler(meal);
+              }}
+            >
+              -
+            </button>
+            <p>{meal.amount}</p>
+            <button
+              onClick={() => {
+                increaseMealHandler(meal);
+              }}
+            >
+              +
+            </button>
+          </S.Meal>
         ))}
-      </S.CartItems>
+      </S.MealsList>
       <S.Total>
         <span>Total Amount</span>
-        <span>$12.99</span>
+        <span>${cart.finalPrice}</span>
       </S.Total>
       <S.Actions>
         <S.CloseButton onClick={props.onCloseModal}>Close</S.CloseButton>

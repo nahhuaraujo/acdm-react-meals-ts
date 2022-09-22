@@ -12,13 +12,19 @@ export const Cart = styled.div`
   z-index: 20;
 `;
 
-export const CartItems = styled.ul`
+export const MealsList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
   max-height: 20rem;
   overflow: auto;
   font-weight: bold;
+`;
+
+export const Meal = styled.li`
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Total = styled.span`

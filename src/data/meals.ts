@@ -1,26 +1,26 @@
 export const DUMMY_MEALS = [
   {
-    id: Math.random(),
+    id: 1,
     name: 'Sushi',
     description: 'Finest fish and veggies',
-    price: 22.99,
+    price: 10,
   },
   {
-    id: Math.random(),
+    id: 2,
     name: 'Schnitzel',
     description: 'A german specialty!',
-    price: 16.5,
+    price: 5,
   },
   {
-    id: Math.random(),
+    id: 3,
     name: 'Barbecue Burger',
     description: 'American, raw, meaty',
-    price: 12.99,
+    price: 12,
   },
   {
-    id: Math.random(),
+    id: 4,
     name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
+    description: 'Healthy... and green...',
+    price: 20,
   },
 ];

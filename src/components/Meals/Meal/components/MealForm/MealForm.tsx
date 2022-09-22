@@ -1,20 +1,49 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { IMeal } from '../../../../../models';
+import { cartActions } from '../../../../../redux/slices/cart-slice';
 import { Input } from '../../../../UI';
 import * as S from './MealForm.styled';
 
 interface Props {
-  mealId: number;
+  meal: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+  };
 }
 
 const MealForm = (props: Props) => {
+  const [amount, setAmount] = useState<number>(1);
+  const dispatch = useDispatch();
+
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(cartActions.addMeal({ ...props.meal, amount }));
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value);
+    if (value <= 5) {
+      setAmount(value);
+    }
   };
 
   return (
     <S.MealForm onSubmit={submitHandler}>
       <Input
         label='Amount'
-        input={{ id: `amount_${props.mealId}`, type: 'number', min: '1', max: '5', step: '1', defaultValue: '1' }}
+        input={{
+          id: `amount_${props.meal.id}`,
+          name: 'amount',
+          type: 'number',
+          min: '1',
+          max: '5',
+          step: '1',
+          defaultValue: amount.toString(),
+          onChange,
+        }}
       />
       <button>Add</button>
     </S.MealForm>
