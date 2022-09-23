@@ -7,6 +7,11 @@ export interface CartState {
   finalPrice: number;
 }
 
+interface CartAction {
+  type: string;
+  payload: IMeal;
+}
+
 const initialState: CartState = {
   meals: [],
   totalMeals: 0,
@@ -17,7 +22,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addMeal: (state, action) => {
+    addMeal: (state: CartState, action: CartAction) => {
       const foundMeal = state.meals.find(meal => meal.id === action.payload.id);
       if (foundMeal) {
         return {

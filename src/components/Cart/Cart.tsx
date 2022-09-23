@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { IStore } from '../../redux/store';
+import { CartState } from '../../redux/slices/cart-slice';
 import * as S from './Cart.styled';
 import { cartActions } from '../../redux/slices/cart-slice';
 import { IMeal } from '../../models';
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Cart = (props: Props) => {
-  const cart = useSelector((state: IStore) => state.cart);
+  const cart = useSelector((state: CartState) => state);
   const dispatch = useDispatch();
 
   const decreaseMealHandler = (meal: IMeal) => {
