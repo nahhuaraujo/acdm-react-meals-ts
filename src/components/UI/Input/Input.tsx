@@ -10,7 +10,6 @@ interface Props {
     max?: string;
     step?: string;
     value: number;
-    defaultValue?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 }

@@ -42,7 +42,6 @@ const MealForm = (props: Props) => {
           max: '5',
           step: '1',
           value: amount,
-          defaultValue: amount.toString(),
           onChange,
         }}
       />
